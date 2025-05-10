@@ -9,7 +9,7 @@ public class StringIsPalindrome
         
     }
 
-    public bool WordIsPalindrome(string word)
+    public bool WordIsPalindromeFor(string word)
     {
         word = word.ToLower();
         word = Regex.Replace(word, @"\s+", "");
@@ -28,5 +28,25 @@ public class StringIsPalindrome
         }
         
         return isPalindrome;
+    }
+    
+    public bool WordIsPalindromeWhile(string word)
+    {
+        if (string.IsNullOrWhiteSpace(word))
+            return true; // Handle empty or whitespace-only inputs early
+
+        word = Regex.Replace(word.ToLower(), @"\s+|[\p{P}]", ""); // Combine cleanup steps
+
+        int left = 0, right = word.Length - 1;
+
+        while (left < right)
+        {
+            if (word[left] != word[right])
+                return false;
+            left++;
+            right--;
+        }
+
+        return true;
     }
 }

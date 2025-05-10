@@ -27,9 +27,16 @@ public class StringIsPalindromeTests
     }
 
     [TestCaseSource(nameof(WordsInAStringTestCases))]
-    public void IsPalindrome(string word, bool expected)
+    public void IsPalindromeFor(string word, bool expected)
     {
-        var result = _helper.WordIsPalindrome(word);
+        var result = _helper.WordIsPalindromeFor(word);
         Assert.That(result, Is.EqualTo(expected));        
+    }
+
+    [TestCaseSource(nameof(WordsInAStringTestCases))]
+    public void IsPalindromeWhile(string word, bool expected)
+    {
+        var result = _helper.WordIsPalindromeWhile(word);
+        Assert.That(result, Is.EqualTo(expected));
     }
 }
